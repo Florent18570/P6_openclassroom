@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 
 const stuffauthent = require("./routes/authentification.js");
+const stuffsauces = require("./routes/sauces.js");
 
 mongoose
   .connect(
@@ -29,5 +30,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/auth", stuffauthent);
+app.use("/api/sauces", stuffsauces);
 
 module.exports = app;
