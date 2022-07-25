@@ -8,7 +8,13 @@ exports.allsauces = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-exports.idsauces = (req, res, next) => {};
+exports.idsauces = (req, res, next) => {
+  Sauces.findOne({ _id: req.params.id })
+    .then((sauces) => {
+      res.status(200).json(sauces);
+    })
+    .catch((error) => res.status(400).json({ error }));
+};
 
 exports.postsauces = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
@@ -26,8 +32,55 @@ exports.postsauces = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-exports.putidsauces = (req, res, next) => {};
+exports.putidsauces = (req, res, next) => {
+  Sauces.updateOne({ _id: req.params.id }, { ...req.body })
+    .then((sauces) => {
+      res.status(200).json(sauces);
+    })
+    .catch((error) => res.status(400).json({ error }));
+};
 
-exports.deletesauces = (req, res, next) => {};
+exports.deletesauces = (req, res, next) => {
+  Sauces.deleteOne({ _id: req.params.id })
+    .then((sauces) => {
+      res.status(200).json(sauces);
+    })
+    .catch((error) => res.status(400).json({ error }));
+};
 
-exports.sauceslike = (req, res, next) => {};
+exports.sauceslike = (req, res, next) => {
+  // ajoute un like
+  if (req.body.likes == 1) {
+    Sauces.updateOne({ _id: req.params.id }, { ...req.body })
+      .then((sauces) => {
+        res.status(200).json(sauces);
+      })
+      .catch((error) => res.status(400).json({ error }));
+  }
+  //ajoute un dislike
+  else if (req.body.dislikes == -1) {
+    Sauces.updateOne({ _id: req.params.id }, { ...req.body })
+      .then((sauces) => {
+        res.status(200).json(sauces);
+      })
+      .catch((error) => res.status(400).json({ error }));
+  }
+
+  //retire un like
+  else if (req.body.likes == 0) {
+    Sauces.updateOne({ _id: req.params.id }, { ...req.body })
+      .then((sauces) => {
+        res.status(200).json(sauces);
+      })
+      .catch((error) => res.status(400).json({ error }));
+  }
+
+  //retire un dislike
+  else if (req.body.dislikes == 0) {
+    Sauces.updateOne({ _id: req.params.id }, { ...req.body })
+      .then((sauces) => {
+        res.status(200).json(sauces);
+      })
+      .catch((error) => res.status(400).json({ error }));
+  }
+};
