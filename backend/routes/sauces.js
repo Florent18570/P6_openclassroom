@@ -5,15 +5,15 @@ const multer = require("../middleware/multer-config");
 const auth = require("../middleware/auth");
 
 // ok
-router.get("/", Saucescontrol.allsauces);
+router.get("/", auth, Saucescontrol.allsauces);
 // ok
-router.get("/:id", Saucescontrol.idsauces);
+router.get("/:id", auth, Saucescontrol.idsauces);
 //ok
-router.post("/", multer, Saucescontrol.postsauces);
+router.post("/", auth, multer, Saucescontrol.postsauces);
 // ok
-router.put("/:id", Saucescontrol.putidsauces);
+router.put("/:id", auth, Saucescontrol.putidsauces);
 // ok
-router.delete("/:id", Saucescontrol.deletesauces);
+router.delete("/:id", auth, Saucescontrol.deletesauces);
 
 router.post("/:id/like", Saucescontrol.sauceslike);
 
