@@ -16,6 +16,9 @@ mongoose
 
 app.use(bodyParser.json());
 
+var helmet = require("helmet");
+app.use(helmet());
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
