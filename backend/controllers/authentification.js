@@ -41,7 +41,7 @@ exports.login = (req, res, next) => {
               {
                 userId: user._id,
               },
-              "RANDOM_TOKEN_SECRET",
+              process.env.JWT_TOKEN_KEY,
               { expiresIn: "24h" }
             ),
           });
