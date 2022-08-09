@@ -11,7 +11,7 @@ router.get("/:id", auth, Saucescontrol.idsauces);
 //ok
 router.post("/", auth, multer, Saucescontrol.postsauces);
 // ok
-router.put("/:id", auth, Saucescontrol.putidsauces);
+router.put("/:id", auth, multer, Saucescontrol.putidsauces);
 // ok
 router.delete("/:id", auth, Saucescontrol.deletesauces);
 
