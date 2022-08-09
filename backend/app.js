@@ -23,6 +23,7 @@ mongoose
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
+app.use("/images", express.static(path.join(__dirname, "images")));
 app.use(bodyParser.json());
 
 var helmet = require("helmet");

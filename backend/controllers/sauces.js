@@ -22,7 +22,9 @@ exports.postsauces = (req, res, next) => {
 
   const sauces = new Sauces({
     ...sauceObject,
-    imageUrl: `${req.protocol}://localhost/P6/backend/images/${req.file.filename}`,
+    imageUrl: `${req.protocol}://${req.get("host")}/images/${
+      req.file.filename
+    }`,
   });
   sauces
     .save()
